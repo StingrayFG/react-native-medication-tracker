@@ -28,7 +28,7 @@ export default function EditorScreen() {
     startDate: new Date(),
     frequency: availableFrequencies[2].code,
     takenAt: Array.from(Array(1).keys())
-    .map(i => new Date((new Date()).setUTCHours(0,0,0,0)))
+    .map(i => new Date((new Date()).setHours(0,0,0,0)))
   };
 
   const [lastSavedMedication, setLastSavedMedication] = useState<MedicationType>(emptyMedication);
@@ -98,7 +98,7 @@ export default function EditorScreen() {
 
   const handleOnStartDateSelection = (event: DateTimePickerEvent, startDate: Date | undefined) => {
     if (startDate) {
-      setEditedMedication({...editedMedication, startDate: new Date(startDate.setUTCHours(0,0,0,0))})
+      setEditedMedication({...editedMedication, startDate: new Date(startDate.setHours(0,0,0,0))})
     }
     closeStartDatePicker();
   }
@@ -112,7 +112,7 @@ export default function EditorScreen() {
       takenAt: [
         ...editedMedication.takenAt,
         ...Array.from(Array(3).keys())
-        .map(i => new Date((new Date()).setUTCHours(0,0,0,0)))
+        .map(i => new Date((new Date()).setHours(0,0,0,0)))
       ].slice(0, Math.max(1, frequency.code))
      })
   }
